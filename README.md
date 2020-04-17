@@ -20,6 +20,7 @@ CONSTANT MASK = "******"
 CONSTANT AT_THE_RATE = "@"
 CONSTANT ASTERISK = "*"
 CONSTANT HYPHEN = "-"
+CONSTANT PLUS = "+"
 
 // Email Id masking flow
 IF str.indexOf(AT_THE_RATE) > 0
@@ -39,7 +40,7 @@ ELSE
     APPEND to stringBuffer -> AT_THE_RATE
     APPEND emailTokens[0]
   END IF
-    RETURN sb toLowerCase 
+    RETURN sb.toString toLowerCase 
     
 ELSE
   // Phone number masking flow
@@ -65,7 +66,10 @@ ELSE
       END IF
       INCREMENT count by 1
     END FOR
-  RETURN sb
+    IF count > 10
+          INSERT to buffer -> sb.insert(0, PLUS);
+    END IF
+  RETURN sb.toString
 END IF
 END
 }
