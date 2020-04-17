@@ -82,11 +82,11 @@ END
 
 import com.initech.customer.pii.ComplianceCheck; 
 
-Strng email = test@gmail.com
+String email = test@gmail.com
 String result = new ComplianceCheck().maskPII(email);
 
 
-Strng phoneNumber = (470)258-0816
+String phoneNumber = (470)258-0816
 String result = new ComplianceCheck().maskPII(phoneNumber);
 
 ```
